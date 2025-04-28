@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Neuro Torno - Monitoramento Inteligente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='chart.js') }}"></script>
+</head>
+<body>
+
+<header>
+    <nav>
+        <img src="{{ url_for('static', filename='neurotorno.png') }}" alt="Logo Neuro Torno" class="logo">
+        <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#monitoramento">Monitoramento</a></li>
+            <li><a href="#dados">Dados</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="sobre" class="section-dark">
+        <h1>NeuroTorno - Inteligência Aplicada à Indústria</h1>
+        <p>Especialistas em monitoramento de cavacos, detecção de falhas e integração de IoT em sistemas industriais. Transformamos dados brutos em decisões inteligentes.</p>
+    </section>
+
+    <section id="monitoramento" class="section-light">
+        <h2>Monitoramento em Tempo Real</h2>
+        <div class="video-container">
+            <img src="{{ url_for('video') }}" alt="Video Stream">
+        </div>
+    </section>
+
+    <section id="dados" class="section-dark">
+        <h2>Dados do NeuroTorno (via ESP32)</h2>
+        <canvas id="grafico-temperatura"></canvas>
+        <canvas id="grafico-vibracao"></canvas>
+    </section>
+
+    <section id="contato" class="section-light">
+        <h2>Contato</h2>
+        <p>Quer automatizar seu processo? Entre em contato conosco!</p>
+        <p>Email: neurotorno@gmail.com.br</p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 NeuroTorno - Usinagem Inteligente</p>
+</footer>
+
+<script>
+// Gráficos simulados (depois substituímos pelos dados reais)
+const ctxTemp = document.getElementById('grafico-temperatura').getContext('2d');
+const ctxVib = document.getElementById('grafico-vibracao').getContext('2d');
+
+const graficoTemperatura = new Chart(ctxTemp, {
+    type: 'line',
+    data: {
+        labels: ['Agora', '5s', '10s', '15s', '20s'],
+        datasets: [{
+            label: 'Temperatura (°C)',
+            data: [25, 26, 27, 26, 28],
+            borderColor: '#00FFFF',
+            backgroundColor: 'rgba(0, 255, 255, 0.1)',
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { labels: { color: 'white' }}
+        },
+        scales: {
+            x: { ticks: { color: 'white' }},
+            y: { ticks: { color: 'white' }}
+        }
+    }
+});
+
+const graficoVibracao = new Chart(ctxVib, {
+    type: 'line',
+    data: {
+        labels: ['Agora', '5s', '10s', '15s', '20s'],
+        datasets: [{
+            label: 'Vibração (Hz)',
+            data: [5, 8, 6, 9, 7],
+            borderColor: '#FF00FF',
+            backgroundColor: 'rgba(255, 0, 255, 0.1)',
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { labels: { color: 'white' }}
+        },
+        scales: {
+            x: { ticks: { color: 'white' }},
+            y: { ticks: { color: 'white' }}
+        }
+    }
+});
+</script>
+
+</body>
+</html>
